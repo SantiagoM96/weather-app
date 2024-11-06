@@ -1,0 +1,1 @@
+export type HourlyOrDaily = "daily" | "hourly";

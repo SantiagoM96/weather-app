@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #d6d7db;
+  --foreground: #292929;
+  --custom-gray: #aaa7a7;
+}
+
+* {
+  @apply m-0 p-0 box-border align-baseline border-0;
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  @apply flex-center w-full min-h-dvh text-base hyphens-none antialiased bg-background;
+}
+
+input::placeholder {
+  @apply text-[--custom-gray]
+};
+
+
+.flex-center {
+  @apply flex items-center justify-center
+}
+
+.card-status {
+  @apply w-full h-full bg-white rounded-[20px] flex flex-col gap-4 p-6 lg:px-6 lg:py-4
+}
+
+.card-status h3 {
+  @apply text-[--custom-gray] font-medium
+}
+
+.button-active {
+  @apply font-bold underline underline-offset-8
+}
+
+.button-inactive {
+  @apply font-medium text-[--custom-gray]
+}
+
+.button-active-units {
+  @apply font-bold bg-black rounded-full w-8 h-8 flex-center text-white text-sm
+}
+
+.button-inactive-units {
+  @apply font-bold bg-white rounded-full w-8 h-8 flex-center text-black text-sm
+}
+
+.drop {
+  @apply bg-[#9ea1a4] block float-left w-1 ml-[2px] h-[10px] opacity-100 animate-[drop] duration-500;
+  animation-duration: 500ms;
+  animation-iteration-count: infinite;
+}
+
+.drop:nth-child(1) {
+  animation-delay: -130ms;
+}
+
+.drop:nth-child(2) {
+  animation-delay: -240ms;
+}
+
+.drop:nth-child(3) {
+  animation-delay: -390ms;
+}
+
+.drop:nth-child(4) {
+  animation-delay: -525ms;
+}
+
+.drop:nth-child(5) {
+  animation-delay: -640ms;
+}
+
+.drop:nth-child(6) {
+  animation-delay: -790ms;
+}
+
+.drop:nth-child(7) {
+  animation-delay: -900ms;
+}
+
+.drop:nth-child(8) {
+  animation-delay: -1050ms;
+}
+
+.drop:nth-child(9) {
+  animation-delay: -1130ms;
+}
+
+.drop:nth-child(10) {
+  animation-delay: -1300ms;
+}
+
+@keyframes drop {
+  50% {
+    height: 45px;
+    opacity: 0;
+  }
+
+  51% {
+    opacity: 0;
+  }
+
+  100% {
+    height: 1px;
+    opacity: 0;
+  }
+}
+
+.sun {
+  @apply animate-[rotate];
+  animation-duration: 16000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
