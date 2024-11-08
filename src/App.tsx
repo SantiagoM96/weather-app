@@ -34,6 +34,7 @@ export default function App() {
       setLoading(true);
       try {
         const data = await fetchWeatherData({ ...query, units });
+        console.log(data)
         setWeather(data);
       } catch (error) {
         console.error("Failed to fetch weather data", error);
@@ -45,7 +46,7 @@ export default function App() {
   }, [query, units]);
 
   return (
-    <main className="grid place-items-center lg:grid-cols-4 w-full max-w-[1200px] h-full">
+    <main className="grid place-items-center lg:grid-cols-4 w-full max-w-[1200px] h-full py-4">
       {loading ? (
         <div className="absolute top-0 left-0 w-full h-full bg-white">
           <Loader />
@@ -55,13 +56,13 @@ export default function App() {
           <>
             <section
               className="md:col-span-1 flex flex-col items-center lg:justify-between 
-            gap-6 w-full h-full bg-white p-8 lg:rounded-t-2xl lg:rounded-tl-2xl 
+            gap-6 w-full h-full bg-white p-8 rounded-t-2xl lg:rounded-tl-2xl 
             lg:rounded-tr-none lg:rounded-bl-2xl">
               <BasicWeatherData basicData={weather} setQuery={setQuery} />
             </section>
 
             <section className="flex flex-col gap-6 p-8 lg:col-span-3 w-full h-full 
-            lg:rounded-br-2xl lg:rounded-tr-2xl bg-[#f6f6f8]">
+            lg:rounded-br-2xl lg:rounded-tr-2xl rounded-b-2xl lg:rounded-bl-none bg-[#f6f6f8]">
               <div className="flex flex-col gap-4">
                 <WeatherButtons units={units} setUnits={setUnits} hourlyOrDaily={hourlyOrDaily} setHourlyOrDaily={setHourlyOrDaily} />
                 {hourlyOrDaily === "daily" ? <DailyOrHourly daily={weather.daily} /> : <DailyOrHourly hourly={weather.hourly} />}
