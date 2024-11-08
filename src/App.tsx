@@ -22,7 +22,7 @@ export default function App() {
     const initializeWeatherData = () => {
       getUserLocation(
         (lat, lon) => setQuery({ lat, lon }),
-        () => setQuery({ city: "Buenos Aires" })
+        () => setQuery({ q: "Buenos Aires" })
       );
     };
     initializeWeatherData();
@@ -34,7 +34,6 @@ export default function App() {
       setLoading(true);
       try {
         const data = await fetchWeatherData({ ...query, units });
-        console.log(data)
         setWeather(data);
       } catch (error) {
         console.error("Failed to fetch weather data", error);

@@ -1,11 +1,11 @@
 import { formatAQI, formatCurrent, formatForecastWeather } from "@/formatters/weather.formatter";
 import { SearchParams } from "@/interfaces/search-weather/searchParams.interface";
+import { BASE_URL } from "@/config/config";
 
 const API_KEY: string | undefined = import.meta.env.VITE_API_KEY;
-const BASE_URL: string | undefined = import.meta.env.VITE_BASE_URL;
 
-if (!API_KEY || !BASE_URL) {
-    throw new Error("Las variables de entorno API_KEY o BASE_URL no están definidas.");
+if (!API_KEY) {
+    throw new Error("API_KEY is not defined");
 }
 
 const getWeatherData = async (infoType: string, searchParams: SearchParams) => {
@@ -34,7 +34,7 @@ const getWeatherData = async (infoType: string, searchParams: SearchParams) => {
         }
 
         const data = await response.json()
-
+        
         if (!data) {
             throw new Error("No weather data in getWeatherData");
         }
@@ -88,10 +88,10 @@ export const fetchAndFormatWeatherData = async (searchParams: SearchParams) => {
         const uvData = await getWeatherData("uvi", {
             lat, lon,
             units: searchParams.units,
-        }).then(data => Math.trunc(data.value)).catch(error =>
+        }).then(data => Math.round(data.value * 10) / 10).catch(error =>
             console.log("Error: ", error))
 
-        if (!uvData) {
+        if (uvData === null || uvData === undefined) {
             throw new Error("NO_UV_DATA");
         }
 

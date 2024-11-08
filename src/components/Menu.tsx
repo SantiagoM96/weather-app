@@ -8,12 +8,15 @@ const Menu = (
         <>
             <h1 className="font-medium text-2xl">{city}, {country}</h1>
 
-            <img
-                src={icon}
-                alt={details}
-                width={100}
-                height={100}
-            />
+            <div className="tooltip">
+                <img
+                    src={icon}
+                    alt={details}
+                    width={100}
+                    height={100}
+                />
+                <span className="tooltipText">{details}</span>
+            </div>
 
             <span className="text-7xl">{temp}°</span>
 

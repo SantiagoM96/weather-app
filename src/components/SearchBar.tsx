@@ -12,7 +12,7 @@ const SearchBar = ({ setQuery }: SearchBarProps) => {
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (city) {
-      setQuery({ city });
+      setQuery({ q: city });
     }
     setCity("");
   };

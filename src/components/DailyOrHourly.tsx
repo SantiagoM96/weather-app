@@ -16,12 +16,15 @@ const DailyOrHourly = ({ daily, hourly }: DailyOrHourlyProps) => {
           <h4 className="font-medium text-sm">
             {item.dayAndTime}
           </h4>
-          <img
-            src={item.icon}
-            alt=""
-            width={50}
-            height={50}
-          />
+          <div className="tooltip">
+            <img
+              src={item.icon}
+              alt={item.details}
+              width={50}
+              height={50}
+            />
+            <span className="tooltipText">{item.details}</span>
+          </div>
           <span className="font-medium text-sm">{item.temp}°</span>
         </div>
       ))}

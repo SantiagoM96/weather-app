@@ -3,4 +3,5 @@ export interface WeatherHourlyDailyItem {
     dayAndTime: string;
     icon: string;
     pop?: string;
+    details: string;
 }

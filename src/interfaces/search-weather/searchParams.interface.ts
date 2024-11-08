@@ -1,5 +1,5 @@
 export interface SearchParams {
-    city?: string;
+    q?: string; //city by OpenWeather
     lat?: string;
     lon?: string;
     units: string;

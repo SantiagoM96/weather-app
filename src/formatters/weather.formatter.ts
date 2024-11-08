@@ -56,6 +56,7 @@ export const formatCurrent = async (data: CurrentWeather) => {
 };
 
 export const formatForecastWeather = (secs: number, offset: number, data: ForecastItem[]) => {
+
     const hourly = data
         .filter(f => f.dt > secs)
         .map((f, index) => ({
@@ -63,6 +64,7 @@ export const formatForecastWeather = (secs: number, offset: number, data: Foreca
             dayAndTime: formatToLocalTime(f.dt, offset),
             icon: iconUrlFromCode(f.weather[0].icon),
             pop: index === 0 ? f.pop : undefined,
+            details: f.weather[0].description,
         }))
         .slice(0, 5);
 
@@ -72,6 +74,7 @@ export const formatForecastWeather = (secs: number, offset: number, data: Foreca
             temp: Math.trunc(f.main.temp),
             dayAndTime: formatToLocalDate(f.dt, offset),
             icon: iconUrlFromCode(f.weather[0].icon),
+            details: f.weather[0].description,
         }))
         .slice(0, 5);
 
